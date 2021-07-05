@@ -17,7 +17,7 @@ class SpecialtyDrController extends AbstractController
 {
     public function __construct(RestServiceController $restServiceController)
     {
-        $this->restServiceController= $restServiceController;
+        $this->restService = $restServiceController;
     }
 
     /**
@@ -26,7 +26,7 @@ class SpecialtyDrController extends AbstractController
      */
     public function getAllAction(SpecialtyDrRepository $specialtyDrRepository)
     {
-        return $this->restServiceController->getAllAction($specialtyDrRepository);
+        return $this->restService->getAllAction($specialtyDrRepository);
     }
 
     /**
@@ -36,7 +36,7 @@ class SpecialtyDrController extends AbstractController
      */
     public function createAction(Request $request)
     {
-        return $this->restServiceController->createAction($request, "App\Entity\SpecialtyDr");
+        return $this->restService->createAction($request, "SpecialtyDr");
     }
 
     /**
@@ -45,7 +45,7 @@ class SpecialtyDrController extends AbstractController
      */
     public function updateAction(SpecialtyDr $specialtyDr, Request $request)
     {
-        return $this->restServiceController->updateAction($specialtyDr, $request);
+        return $this->restService->updateAction($specialtyDr, $request);
     }
 
     /**
@@ -54,6 +54,6 @@ class SpecialtyDrController extends AbstractController
      */
     public function deleteAction($id, SpecialtyDrRepository $specialtyDrRepository)
     {
-        return $this->restServiceController->deleteAction($id, $specialtyDrRepository);
+        return $this->restService->deleteAction($id, $specialtyDrRepository);
     }
 }

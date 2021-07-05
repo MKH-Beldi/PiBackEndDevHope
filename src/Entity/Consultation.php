@@ -229,4 +229,22 @@ class Consultation
 
         return $this;
     }
+
+    /**
+     * @param ArrayCollection $symptoms
+     */
+    public function setSymptoms(ArrayCollection $symptoms): void
+    {
+        $this->symptoms = $symptoms;
+    }
+
+    /**
+     * @param $att
+     * @param $val
+     */
+    public function __set($att, $val): void
+    {
+        $this->$att = $val;
+    }
+
 }

@@ -175,4 +175,13 @@ class Profil
 
         return $this;
     }
+
+    /**
+     * @param $att
+     * @param $val
+     */
+    public function __set($att, $val): void
+    {
+        $this->$att = $val;
+    }
 }

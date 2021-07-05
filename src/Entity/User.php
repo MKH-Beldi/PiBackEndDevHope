@@ -355,5 +355,13 @@ class User
         $this->specialtyDr = $specialtyDr;
     }
 
+    /**
+     * @param $att
+     * @param $val
+     */
+    public function __set($att, $val): void
+    {
+        $this->$att = $val;
+    }
 
 }
