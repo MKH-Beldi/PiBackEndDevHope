@@ -45,7 +45,7 @@ class ConsultationController extends AbstractController
      */
     public function updateAction(Consultation $consultation, Request $request)
     {
-        return $this->restService->updateAction($consultation, $request);
+        return $this->restService->updateWithRefsAction($request, $consultation, [new Reference("Symptom", "symptoms", true)]);
     }
 
     /**

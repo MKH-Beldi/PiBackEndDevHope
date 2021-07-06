@@ -35,7 +35,7 @@ class ScheduleController extends AbstractController
      */
     public function createAction(Request $request)
     {
-        return $this->restService->createWithRefsAction($request, "Schedule", [new Reference('User', 'userDr', false), new Reference('User', 'userPatient', false), new Reference('Consultation', 'consultation', false)]);
+        return $this->restService->createWithRefsAction($request, "Schedule", [new Reference('User', 'userDr', false)]);
     }
 
     /**

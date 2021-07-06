@@ -86,23 +86,25 @@ class RestServiceController extends AbstractController
 
         foreach ($references as $reference)
         {
-            $referencesArray = new ArrayCollection($dataArray[$reference->refName]);
-            if($reference->isArray)
-            {
-                foreach ($referencesArray as $ref){
-                    $referenceArrayIds[] = $ref["id"];
-                    $classNameRef = $reference->className;
-                    $objectsRef = $this->getDoctrine()->getRepository("App\Entity\\".$classNameRef)->findBy(array('id' => $referenceArrayIds));
-                }
-                $objectsArrayCollection = new ArrayCollection($objectsRef);
-                $object->__set($reference->refName, $objectsArrayCollection);
+            if (isset($dataArray[$reference->refName])) {
+                $referencesArray = new ArrayCollection($dataArray[$reference->refName]);
+                if($reference->isArray)
+                {
+                    foreach ($referencesArray as $ref){
+                        $referenceArrayIds[] = $ref["id"];
+                        $classNameRef = $reference->className;
+                        $objectsRef = $this->getDoctrine()->getRepository("App\Entity\\".$classNameRef)->findBy(array('id' => $referenceArrayIds));
+                    }
+                    $objectsArrayCollection = new ArrayCollection($objectsRef);
+                    $object->__set($reference->refName, $objectsArrayCollection);
 
-            }else
-            {
-                $referenceId= $dataArray[$reference->refName]["id"];
-                $classNameRef = $reference->className;
-                $objectRef = $this->getDoctrine()->getManager()->getRepository("App\Entity\\".$classNameRef)->find($referenceId);
-                $object->__set($reference->refName, $objectRef);
+                }else
+                {
+                    $referenceId= $dataArray[$reference->refName]["id"];
+                    $classNameRef = $reference->className;
+                    $objectRef = $this->getDoctrine()->getManager()->getRepository("App\Entity\\".$classNameRef)->find($referenceId);
+                    $object->__set($reference->refName, $objectRef);
+                }
             }
 
         }

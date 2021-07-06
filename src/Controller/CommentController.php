@@ -10,12 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Reference;
 
-
-
 /**
  * @Route("/api/comment")
  */
-
 class CommentController extends AbstractController
 {
     public function __construct(RestServiceController $restServiceController)
@@ -33,12 +30,12 @@ class CommentController extends AbstractController
     }
 
     /**
-     * @Route("/create", name="publication_create", methods={"POST"})
+     * @Route("/create", name="comment_create", methods={"POST"})
      * @return Response
      */
     public function createAction(Request $request)
     {
-        return $this->restService->createWithRefsAction($request, "Comment", [new Reference('User', 'user_id', false), new Reference('Publication', 'publication_id', false)]);
+        return $this->restService->createWithRefsAction($request, "Comment", [new Reference('User', 'user', false), new Reference('Publication', 'publication', false)]);
     }
 
     /**
@@ -47,7 +44,7 @@ class CommentController extends AbstractController
      */
     public function updateAction(Comment $comment, Request $request)
     {
-        return $this->restService->updateWithRefsAction($request, $comment, [new Reference('User', 'user_id', false), new Reference('Publication', 'publication_id', false)]);
+        return $this->restService->updateWithRefsAction($request, $comment, [new Reference('User', 'user', false), new Reference('Publication', 'publication', false)]);
     }
 
     /**

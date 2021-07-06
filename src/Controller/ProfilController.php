@@ -37,7 +37,7 @@ class ProfilController extends AbstractController
      */
     public function createAction(Request $request)
     {
-        return $this->restService->createWithRefsAction($request, "Profil", [new Reference('User', 'user_dr_id', false)]);
+        return $this->restService->createWithRefsAction($request, "Profil", [new Reference('User', 'userDr', false)]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ProfilController extends AbstractController
      */
     public function updateAction(Profil $profil, Request $request)
     {
-        return $this->restService->updateWithRefsAction($request, $profil, [new Reference('User', 'user_dr_id', false)]);
+        return $this->restService->updateWithRefsAction($request, $profil, [new Reference('User', 'userDr', false)]);
     }
 
     /**

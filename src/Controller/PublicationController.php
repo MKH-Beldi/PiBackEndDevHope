@@ -38,7 +38,7 @@ class PublicationController extends AbstractController
      */
     public function createAction(Request $request)
     {
-        return $this->restService->createWithRefsAction($request, "Publication", [new Reference('User', 'user_dr_id', false)]);
+        return $this->restService->createWithRefsAction($request, "Publication", [new Reference('User', 'userDr', false)]);
     }
 
     /**
@@ -47,11 +47,11 @@ class PublicationController extends AbstractController
      */
     public function updateAction(Publication $publication, Request $request)
     {
-        return $this->restService->updateWithRefsAction($request, $publication, [new Reference('User', 'user_dr_id', false)]);
+        return $this->restService->updateWithRefsAction($request, $publication, [new Reference('User', 'userDr', false)]);
     }
 
     /**
-     * @Route("/delete/{id}", name="profil_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="publication_delete", methods={"DELETE"})
      * @return Response
      */
     public function deleteAction($id, PublicationRepository   $publicationRepository)
