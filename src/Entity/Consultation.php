@@ -6,6 +6,7 @@ use App\Repository\ConsultationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ConsultationRepository::class)
@@ -16,56 +17,67 @@ class Consultation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_consultation"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $diagnostic;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $weightPatient;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $heightPatient;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $bodyTemperature;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $bloodPressure;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Schedule::class, mappedBy="consultation")
+     * @Groups({"show_consultation"})
      */
     private $schedules;
 
     /**
      * @ORM\ManyToMany(targetEntity=Symptom::class)
+     * @Groups({"show_consultation"})
      */
     private $symptoms;
 

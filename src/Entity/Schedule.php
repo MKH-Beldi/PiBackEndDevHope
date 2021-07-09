@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ScheduleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ScheduleRepository::class)
@@ -14,11 +15,13 @@ class Schedule
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_consultation"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"show_consultation"})
      */
     private $day;
 
@@ -39,22 +42,26 @@ class Schedule
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_consultation"})
      */
     private $color;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_consultation"})
      */
     private $userDr;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
+     * @Groups({"show_consultation"})
      */
     private $userPatient;
 

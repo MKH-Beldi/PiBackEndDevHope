@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CityRepository::class)
@@ -14,17 +15,20 @@ class City
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_user", "show_consultation"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Gouvernorate::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_user"})
      */
     private $gouvernorate;
 

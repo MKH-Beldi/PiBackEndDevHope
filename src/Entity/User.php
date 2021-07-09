@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,16 +18,19 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_user", "show_consultation"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"show_user", "show_consultation"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"show_user"})
      */
     private $roles = [];
 
@@ -38,86 +42,103 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_user"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_user", "show_consultation"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"show_user", "show_consultation"})
      */
     private $dateOfBirth;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $sex;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $cin;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $officeTel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $mobileTel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $imgProfil;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $zipCode;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $nationality;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $nameLab;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_user"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_user"})
      */
     private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=City::class)
+     * @Groups({"show_user", "show_consultation"})
      */
     private $city;
 
     /**
      * @ORM\ManyToMany(targetEntity=SpecialtyDr::class)
+     * @Groups({"show_user"})
      */
     private $specialtyDr;
 

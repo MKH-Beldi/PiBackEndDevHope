@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SpecialtyDrRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SpecialtyDrRepository::class)
@@ -14,16 +15,19 @@ class SpecialtyDr
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_user"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_user"})
      */
     private $description;
 

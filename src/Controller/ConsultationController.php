@@ -28,7 +28,8 @@ class ConsultationController extends AbstractController
      */
     public function getAllAction(ConsultationRepository $consultationRepository)
     {
-        return $this->restService->getAllAction($consultationRepository);
+        $groups = ['groups' => 'show_consultation'];
+        return $this->restService->getAllAction($consultationRepository, $groups);
     }
 
     /**

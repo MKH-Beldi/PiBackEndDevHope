@@ -18,18 +18,15 @@ class RestServiceController extends AbstractController
 {
     /**
      * @param mixed $objectRepository
+     * @param [] $groups
      * @return Response
      */
-    public function getAllAction($objectRepository)
+    public function getAllAction($objectRepository, $groups)
     {
         $list = $objectRepository->findAll();
 
         $serializer = $this->get('serializer');
-        $data = $serializer->serialize($list, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
-        ]);
+        $data = $serializer->serialize($list, 'json', $groups);
 
         $response = new Response($data, Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');

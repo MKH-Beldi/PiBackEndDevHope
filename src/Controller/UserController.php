@@ -6,6 +6,7 @@ use App\Controller\Service\RestServiceController;
 use App\Entity\Reference;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +28,8 @@ class UserController extends AbstractController
      */
     public function getAllAction(UserRepository $userRepository)
     {
-        return $this->restService->getAllAction($userRepository);
+        $groups = ['groups' => 'show_user'];
+        return $this->restService->getAllAction($userRepository, $groups);
     }
 
     /**
