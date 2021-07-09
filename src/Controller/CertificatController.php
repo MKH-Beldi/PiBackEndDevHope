@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Service\RestServiceController;
 use App\Entity\Certificat;
 use App\Repository\CertificatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

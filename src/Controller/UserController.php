@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Service\RestServiceController;
 use App\Entity\Reference;
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -44,7 +45,7 @@ class UserController extends AbstractController
      */
     public function updateAction(User $user, Request $request)
     {
-        return $this->restService->updateAction($user, $request);
+        return $this->restService->updateWithRefsAction($request, $user, [new Reference('SpecialtyDr', 'specialtyDr', 'true'), new Reference('City', 'city', false)]);
     }
 
     /**
@@ -55,5 +56,4 @@ class UserController extends AbstractController
     {
         return $this->restService->deleteAction($id, $userRepository);
     }
-
 }

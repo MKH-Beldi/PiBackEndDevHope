@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Service\RestServiceController;
 use App\Entity\Symptom;
 use App\Repository\SymptomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

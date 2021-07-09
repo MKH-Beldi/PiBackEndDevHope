@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Service\RestServiceController;
 use App\Entity\SpecialtyDr;
 use App\Repository\SpecialtyDrRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

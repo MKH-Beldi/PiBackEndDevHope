@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Service\RestServiceController;
 use App\Entity\MedicalExam;
 use App\Entity\Reference;
 use App\Repository\MedicalExamRepository;
