@@ -15,53 +15,56 @@ class Schedule
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_consultation"})
+     * @Groups({"show_Schedule","show_consultation"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"show_consultation"})
+     * @Groups({"show_Schedule","show_consultation"})
      */
     private $day;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *  @Groups({"show_Schedule"})
      */
     private $startHour;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_Schedule"})
      */
     private $endHour;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"show_Schedule"})
      */
     private $isAvailable;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $color;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $userDr;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $userPatient;
 
@@ -77,6 +80,7 @@ class Schedule
 
     /**
      * @ORM\ManyToOne(targetEntity=Consultation::class, inversedBy="schedules")
+     * @Groups({"show_Schedule"})
      */
     private $consultation;
 

@@ -17,7 +17,7 @@ class Consultation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $id;
 

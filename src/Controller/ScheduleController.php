@@ -27,7 +27,9 @@ class ScheduleController extends AbstractController
      */
     public function getAllAction(ScheduleRepository $scheduleRepository)
     {
-        return $this->restService->getAllAction($scheduleRepository);
+        $groups = ['groups' => 'show_Schedule'];
+
+        return $this->restService->getAllAction($scheduleRepository,$groups);
     }
 
     /**

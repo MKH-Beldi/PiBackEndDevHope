@@ -20,7 +20,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_user", "show_consultation" ,"show_profil"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil","show_Schedule"})
      */
     private $id;
 
@@ -50,13 +50,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user" , "show_consultation" ,"show_profil" , "show_publication" ,"show_comment"})
+     * @Groups({"show_user" , "show_consultation" ,"show_profil" , "show_publication" ,"show_comment","show_Schedule"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user", "show_consultation" ,"show_profil" , "show_publication" ,"show_comment"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil" , "show_publication" ,"show_comment","show_Schedule"})
      */
     private $firstName;
 
