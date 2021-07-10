@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\GouvernorateRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Repository\ProfilRepository;
 
 /**
  * @ORM\Entity(repositoryClass=GouvernorateRepository::class)

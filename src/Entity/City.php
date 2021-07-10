@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CityRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Repository\ProfilRepository;
 
 /**
  * @ORM\Entity(repositoryClass=CityRepository::class)
