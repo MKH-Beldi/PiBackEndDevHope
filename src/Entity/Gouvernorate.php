@@ -16,13 +16,13 @@ class Gouvernorate
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $name;
 

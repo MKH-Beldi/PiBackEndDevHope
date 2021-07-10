@@ -20,13 +20,13 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_user", "show_consultation"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"show_user", "show_consultation"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil"})
      */
     private $email;
 
@@ -50,13 +50,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" , "show_consultation" ,"show_profil" , "show_publication" ,"show_comment"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user", "show_consultation"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil" , "show_publication" ,"show_comment"})
      */
     private $firstName;
 
@@ -80,43 +80,43 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $officeTel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $mobileTel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $imgProfil;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $zipCode;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $nationality;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $nameLab;
 
@@ -140,7 +140,7 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity=SpecialtyDr::class)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $specialtyDr;
 

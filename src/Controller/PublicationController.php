@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Reference;
-use App\Repository\ProfilRepository;
+
 
 
 
@@ -31,7 +31,8 @@ class PublicationController extends AbstractController
      */
     public function getAllAction(PublicationRepository  $publicationRepository)
     {
-        return $this->restService->getAllAction($publicationRepository);
+        $groups = ['groups' => 'show_publication'];
+        return $this->restService->getAllAction($publicationRepository, $groups);;
     }
 
     /**

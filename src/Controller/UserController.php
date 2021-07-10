@@ -58,4 +58,5 @@ class UserController extends AbstractController
     {
         return $this->restService->deleteAction($id, $userRepository);
     }
+
 }

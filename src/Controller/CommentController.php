@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Reference;
-use App\Repository\ProfilRepository;
+
 
 
 /**
@@ -29,8 +29,8 @@ class CommentController extends AbstractController
      */
     public function getAllAction(CommentRepository  $commentRepository)
     {
-        return $this->restService->getAllAction($commentRepository);
-    }
+        $groups = ['groups' => 'show_comment'];
+        return $this->restService->getAllAction($commentRepository, $groups);    }
 
     /**
      * @Route("/create", name="comment_create", methods={"POST"})

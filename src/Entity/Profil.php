@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProfilRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PublicationRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
@@ -15,52 +16,72 @@ class Profil
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_profil"})
+
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $imgCover;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $biography;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $currentPosition;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $note;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $academicTraining;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $workExperience;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_profil"})
+
      */
     private $updatedAt;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_profil"})
+
      */
     private $userDr;
 

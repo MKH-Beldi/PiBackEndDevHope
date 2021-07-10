@@ -21,13 +21,13 @@ class SpecialtyDr
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"} )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $description;
 

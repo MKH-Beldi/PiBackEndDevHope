@@ -24,6 +24,7 @@ class CityController extends AbstractController
      */
     public function getAllAction(CityRepository $cityRepository)
     {
-        return $this->restService->getAllAction($cityRepository);
+        $groups = ['groups' => 'city_comment'];
+        return $this->restService->getAllAction($cityRepository, $groups);
     }
 }

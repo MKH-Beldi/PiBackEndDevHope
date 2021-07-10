@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\PublicationRepository;
 
 
 /**
@@ -30,8 +29,8 @@ class ProfilController extends AbstractController
      */
     public function getAllAction(ProfilRepository  $profilRepository)
     {
-        return $this->restService->getAllAction($profilRepository);
-    }
+        $groups = ['groups' => 'show_profil'];
+        return $this->restService->getAllAction($profilRepository, $groups);    }
 
     /**
      * @Route("/create", name="profil_create", methods={"POST"})
