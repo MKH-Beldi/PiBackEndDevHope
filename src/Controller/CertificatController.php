@@ -28,7 +28,8 @@ class CertificatController extends AbstractController
      */
     public function getAllAction(CertificatRepository  $certificatRepository)
     {
-        return $this->restService->getAllAction($certificatRepository);
+        $groups = ['groups' => 'show_certificat'];
+        return $this->restService->getAllAction($certificatRepository,$groups);
     }
 
     /**
