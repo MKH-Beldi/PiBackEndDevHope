@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PublicationRepository::class)
@@ -14,37 +15,51 @@ class Publication
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_publication"})
+
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_publication", "show_comment" })
+
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"show_publication" , "show_comment"})
+
      */
     private $contente;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_publication" , "show_comment"})
+
      */
     private $file;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_publication"})
+
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_publication"})
+
      */
     private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_publication"})
+
      */
     private $userDr;
 

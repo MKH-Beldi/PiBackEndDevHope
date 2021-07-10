@@ -27,7 +27,8 @@ class CommentController extends AbstractController
      */
     public function getAllAction(CommentRepository  $commentRepository)
     {
-        return $this->restService->getAllAction($commentRepository);
+        $groups = ['groups' => 'show_comment'];
+        return $this->restService->getAllAction($commentRepository, $groups);
     }
 
     /**

@@ -30,7 +30,8 @@ class PublicationController extends AbstractController
      */
     public function getAllAction(PublicationRepository  $publicationRepository)
     {
-        return $this->restService->getAllAction($publicationRepository);
+        $groups = ['groups' => 'show_publication'];
+        return $this->restService->getAllAction($publicationRepository, $groups);
     }
 
     /**

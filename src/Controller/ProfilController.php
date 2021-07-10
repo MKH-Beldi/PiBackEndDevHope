@@ -10,6 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\User;
+use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 
 /**
@@ -29,7 +33,8 @@ class ProfilController extends AbstractController
      */
     public function getAllAction(ProfilRepository  $profilRepository)
     {
-        return $this->restService->getAllAction($profilRepository);
+        $groups = ['groups' => 'show_profil'];
+        return $this->restService->getAllAction($profilRepository, $groups);
     }
 
     /**
