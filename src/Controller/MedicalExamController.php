@@ -27,7 +27,8 @@ class MedicalExamController extends AbstractController
      */
     public function getAllAction(MedicalExamRepository $MedicalExamRepository)
     {
-        return $this->restService->getAllAction($MedicalExamRepository);
+        $groups = ['groups' => 'show_medicalExam'];
+        return $this->restService->getAllAction($MedicalExamRepository,$groups);
     }
 
     /**

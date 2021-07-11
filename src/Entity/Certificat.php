@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CertificatRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CertificatRepository::class)
@@ -14,31 +15,37 @@ class Certificat
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_certificat"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"show_certificat"})
      */
     private $nbrRestDay;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"show_certificat"})
      */
     private $startDate;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"show_certificat"})
      */
     private $endDate;
 
     /**
      * @ORM\ManyToOne(targetEntity=Consultation::class)
+     * @Groups({"show_certificat"})
      */
     private $consultation;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_certificat"})
      */
     private $createdAt;
 
