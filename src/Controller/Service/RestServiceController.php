@@ -4,6 +4,7 @@ namespace App\Controller\Service;
 
 use App\Entity\Reference;
 use Doctrine\Common\Collections\ArrayCollection;
+use PhpParser\Node\Scalar\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,6 +38,28 @@ class RestServiceController extends AbstractController
     }
 
     /**
+     * @param mixed $objectRepository
+     * @param string $criteria
+     * @param mixed $value
+     * @param [] $groups
+     * @return Response
+     */
+    public function getBy($objectRepository, $criteria, $value, $groups)
+    {
+        $object = $objectRepository->findBy([$criteria => $value]);
+
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($object, 'json', $groups);
+
+        $response = new Response($data, Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'GET');
+
+        return $response;
+    }
+
+    /**
      * @param Request $request
      * @param string $className
      * @return Response
@@ -53,7 +76,8 @@ class RestServiceController extends AbstractController
         $em->persist($objectToPersist);
         $em->flush();
 
-        $response = new Response('Instance of '."App\Entity\\".$className.' created successfully.', Response::HTTP_CREATED);
+        $message = json_encode('Instance of '."App\Entity\\".$className.' created successfully.');
+        $response = new Response($message, Response::HTTP_CREATED);
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'POST');
 
@@ -111,7 +135,8 @@ class RestServiceController extends AbstractController
         $em->persist($object);
         $em->flush();
 
-        $response = new Response("App\Entity\\".$className.' created successfully.', Response::HTTP_CREATED);
+        $message = json_encode('Instance of '."App\Entity\\".$className.' created successfully.');
+        $response = new Response($message, Response::HTTP_CREATED);
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'POST');
 
@@ -135,10 +160,10 @@ class RestServiceController extends AbstractController
         $objectUpdate->setUpdatedAt(new \DateTime("now", new \DateTimeZone('Africa/Tunis')));
         $entityManager->flush();
 
-        $response = new Response('Instance of '.get_class($objectUpdate).' updated successfully.', Response::HTTP_OK);
+        $message = json_encode('Instance of '.get_class($objectUpdate).' updated successfully.');
+        $response = new Response($message, Response::HTTP_CREATED);
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'PUT, PATCH');
-
         return $response;
     }
 
@@ -191,7 +216,8 @@ class RestServiceController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->flush();
 
-        $response = new Response('Instance of '.get_class($objectUpdate).' updated successfully.', Response::HTTP_OK);
+        $message = json_encode('Instance of '.get_class($objectUpdate).' updated successfully.');
+        $response = new Response($message, Response::HTTP_CREATED);
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'PUT, PATCH');
 
@@ -215,11 +241,11 @@ class RestServiceController extends AbstractController
         $entityManager->remove($objectToDelete);
         $entityManager->flush();
 
-        $response = new Response('Instance of '.get_class($objectToDelete).' deleted successfully.', Response::HTTP_OK);
+        $message = json_encode('Instance of '.get_class($objectToDelete).' deleted successfully.');
+        $response = new Response($message, Response::HTTP_CREATED);
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'DELETE');
 
         return $response;
     }
-
 }
