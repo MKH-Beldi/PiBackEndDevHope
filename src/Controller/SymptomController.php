@@ -31,6 +31,18 @@ class SymptomController extends AbstractController
     }
 
     /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="symptom_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(SymptomRepository $symptomRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_symptom'];
+        return $this->restService->getBy($symptomRepository, $criteria , $value, $groups);
+    }
+
+    /**
      * @Route("/create", name="symptom_create", methods={"POST"})
      * @param Request $request
      * @return Response
@@ -80,5 +92,6 @@ class SymptomController extends AbstractController
         return $response;
 
     }
+
 
 }
