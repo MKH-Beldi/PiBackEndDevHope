@@ -33,6 +33,19 @@ class CommentController extends AbstractController
         return $this->restService->getAllAction($commentRepository, $groups);    }
 
     /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="comment_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(CommentRepository $commentRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_comment'];
+        return $this->restService->getBy($commentRepository, $criteria , $value, $groups);
+    }
+
+
+    /**
      * @Route("/create", name="comment_create", methods={"POST"})
      * @return Response
      */

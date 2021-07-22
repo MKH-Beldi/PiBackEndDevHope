@@ -33,6 +33,21 @@ class ProfilController extends AbstractController
         return $this->restService->getAllAction($profilRepository, $groups);    }
 
     /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="profil_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(ProfilRepository $profilRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_profil'];
+        return $this->restService->getBy($profilRepository, $criteria , $value, $groups);
+    }
+
+
+
+
+    /**
      * @Route("/create", name="profil_create", methods={"POST"})
      * @return Response
      */
