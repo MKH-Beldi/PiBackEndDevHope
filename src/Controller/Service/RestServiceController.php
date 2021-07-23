@@ -75,8 +75,9 @@ class RestServiceController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($objectToPersist);
         $em->flush();
-
-        $message = json_encode('Instance of '."App\Entity\\".$className.' created successfully.');
+        $objectToPersist->getId();
+        $result = array( $objectToPersist->getId(),'Instance of '."App\Entity\\".$className.' created successfully.');
+        $message = json_encode($result);
         $response = new Response($message, Response::HTTP_CREATED);
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'POST');
