@@ -34,25 +34,25 @@ class Consultation
     private $status;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="float", length=255, nullable=true)
      * @Groups({"show_consultation"})
      */
     private $weightPatient;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="float", length=255, nullable=true)
      * @Groups({"show_consultation"})
      */
     private $heightPatient;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="float", length=255, nullable=true)
      * @Groups({"show_consultation"})
      */
     private $bodyTemperature;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="float", length=255, nullable=true)
      * @Groups({"show_consultation"})
      */
     private $bloodPressure;
@@ -116,48 +116,48 @@ class Consultation
         return $this;
     }
 
-    public function getWeightPatient(): ?string
+    public function getWeightPatient(): ?float
     {
         return $this->weightPatient;
     }
 
-    public function setWeightPatient(?string $weightPatient): self
+    public function setWeightPatient(?float $weightPatient): self
     {
         $this->weightPatient = $weightPatient;
 
         return $this;
     }
 
-    public function getHeightPatient(): ?string
+    public function getHeightPatient(): ?float
     {
         return $this->heightPatient;
     }
 
-    public function setHeightPatient(?string $heightPatient): self
+    public function setHeightPatient(?float $heightPatient): self
     {
         $this->heightPatient = $heightPatient;
 
         return $this;
     }
 
-    public function getBodyTemperature(): ?string
+    public function getBodyTemperature(): ?float
     {
         return $this->bodyTemperature;
     }
 
-    public function setBodyTemperature(?string $bodyTemperature): self
+    public function setBodyTemperature(?float $bodyTemperature): self
     {
         $this->bodyTemperature = $bodyTemperature;
 
         return $this;
     }
 
-    public function getBloodPressure(): ?string
+    public function getBloodPressure(): ?float
     {
         return $this->bloodPressure;
     }
 
-    public function setBloodPressure(?string $bloodPressure): self
+    public function setBloodPressure(?float $bloodPressure): self
     {
         $this->bloodPressure = $bloodPressure;
 

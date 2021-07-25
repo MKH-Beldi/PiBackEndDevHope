@@ -33,6 +33,18 @@ class ConsultationController extends AbstractController
     }
 
     /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="consultation_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(ConsultationRepository $consultationRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_consultation'];
+        return $this->restService->getBy($consultationRepository, $criteria , $value, $groups);
+    }
+
+    /**
      * @Route("/create", name="consultation_create", methods={"POST"})
      * @return Response
      */
