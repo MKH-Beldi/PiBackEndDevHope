@@ -35,19 +35,19 @@ class Symptom
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_symptom", "show_consultation"})
+     * @Groups({"show_symptom"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"show_symptom", "show_consultation"})
+     * @Groups({"show_symptom"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"show_symptom", "show_consultation"})
+     * @Groups({"show_symptom"})
      */
     private $updatedAt;
 

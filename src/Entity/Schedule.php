@@ -27,19 +27,19 @@ class Schedule
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     *  @Groups({"show_Schedule"})
+     *  @Groups({"show_Schedule", "show_consultation"})
      */
     private $startHour;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"show_Schedule"})
+     * @Groups({"show_Schedule", "show_consultation"})
      */
     private $endHour;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
-     * @Groups({"show_Schedule"})
+     * @Groups({"show_Schedule","show_consultation"})
      */
     private $isAvailable;
 

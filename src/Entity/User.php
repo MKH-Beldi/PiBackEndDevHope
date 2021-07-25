@@ -20,7 +20,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_user", "show_consultation" ,"show_profil","show_Schedule","show_medicalExam"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil","show_Schedule","show_medicalExam", "show_consultation"})
      */
     private $id;
 
@@ -32,7 +32,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"show_user"})
+     * @Groups({"show_user", "show_consultation"})
      */
     private $roles = [];
 
