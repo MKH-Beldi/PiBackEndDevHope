@@ -29,13 +29,13 @@ class Schedule
      * @ORM\Column(type="datetime", nullable=true)
      *  @Groups({"show_Schedule"})
      */
-    private $startHour;
+    private $start;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"show_Schedule"})
      */
-    private $endHour;
+    private $end;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -101,26 +101,26 @@ class Schedule
         return $this;
     }
 
-    public function getStartHour(): ?\DateTimeInterface
+    public function getStart(): ?\DateTimeInterface
     {
-        return $this->startHour;
+        return $this->start;
     }
 
-    public function setStartHour(?\DateTimeInterface $startHour): self
+    public function setStart(?\DateTimeInterface $start): self
     {
-        $this->startHour = $startHour;
+        $this->start = $start;
 
         return $this;
     }
 
-    public function getEndHour(): ?\DateTimeInterface
+    public function getEnd(): ?\DateTimeInterface
     {
-        return $this->endHour;
+        return $this->end;
     }
 
-    public function setEndHour(?\DateTimeInterface $endHour): self
+    public function setEnd(?\DateTimeInterface $end): self
     {
-        $this->endHour = $endHour;
+        $this->end= $end;
 
         return $this;
     }
