@@ -4,6 +4,7 @@
 namespace App\Controller\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SecurityController extends AbstractController
@@ -19,5 +20,24 @@ class SecurityController extends AbstractController
             'username' => $user->getUsername(),
             'roles' => $user->getRoles(),
         ]);
+    }
+
+    /**
+     * @Route("/api/getUser", name="login_get", methods={"get"})
+     * @return Response
+     */
+    public function getUserAction()
+    {
+        $groups = ['groups' => 'show_user'];
+        $user = $this->getUser();
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($user, 'json', $groups);
+
+        $response = new Response($data, Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'GET');
+
+        return $response;
     }
 }
