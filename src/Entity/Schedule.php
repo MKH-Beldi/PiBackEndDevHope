@@ -20,7 +20,7 @@ class Schedule
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      * @Groups({"show_Schedule","show_consultation"})
      */
     private $day;
