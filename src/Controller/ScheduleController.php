@@ -65,9 +65,9 @@ class ScheduleController extends AbstractController
      * @Route("/get/{criteria}/{value}", name="schedule_getBy", methods={"GET"})
      * @return Response
      */
-    public function getByAction(ScheduleRepository $sycheduleRepository, $criteria , $value)
+    public function getByAction(ScheduleRepository $scheduleRepository, $criteria , $value)
     {
         $groups = ['groups' => 'show_Schedule'];
-        return $this->restService->getBy($sycheduleRepository, $criteria , $value, $groups);
+        return $this->restService->getBy($scheduleRepository, $criteria , $value, $groups);
     }
 }

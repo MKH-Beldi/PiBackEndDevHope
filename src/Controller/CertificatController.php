@@ -58,4 +58,27 @@ class CertificatController extends AbstractController
     {
         return $this->restService->deleteAction($id, $certificatRepository);
     }
+
+    /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="certificat_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(CertificatRepository  $certificatRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_certificat'];
+        return $this->restService->getBy($certificatRepository, $criteria, $value, $groups);
+    }
+
+    /**
+     * @param mixed $id
+     * @Route("/get/{id}", name="certificat_getById", methods={"GET"})
+     * @return Response
+     */
+    public function getByIdAction(CertificatRepository  $certificatRepository, $id)
+    {
+        $certificatRepository = $this->getDoctrine()->getRepository(Certificat::class);
+        return $certificatRepository->find($id);
+    }
 }

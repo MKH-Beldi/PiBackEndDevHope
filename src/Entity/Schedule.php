@@ -58,7 +58,7 @@ class Schedule
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"show_consultation","show_Schedule"})
+     * @Groups({"show_consultation","show_Schedule", "show_certificat"})
      */
     private $userDr;
 
