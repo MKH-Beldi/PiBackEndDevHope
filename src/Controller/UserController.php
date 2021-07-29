@@ -33,6 +33,18 @@ class UserController extends AbstractController
     }
 
     /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="user_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(UserRepository $userRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_user'];
+        return $this->restService->getBy($userRepository, $criteria , $value, $groups);
+    }
+
+    /**
      * @Route("/create", name="user_create", methods={"POST"})
      * @return Response
      */
