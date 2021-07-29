@@ -58,4 +58,16 @@ class MedicalExamController extends AbstractController
         return $this->restService->deleteAction($id, $medicalExamRepository);
     }
 
+    /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="medicalExam_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(MedicalExamRepository  $medicalExamRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_medicalExam'];
+        return $this->restService->getBy($medicalExamRepository, $criteria, $value, $groups);
+    }
+
 }
