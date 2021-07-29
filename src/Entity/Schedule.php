@@ -15,53 +15,56 @@ class Schedule
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_consultation"})
+     * @Groups({"show_Schedule","show_consultation"})
      */
     private $id;
 
     /**
-     * @ORM\Column(type="date")
-     * @Groups({"show_consultation"})
+     * @ORM\Column(type="date", nullable=true)
+     * @Groups({"show_Schedule","show_consultation"})
      */
     private $day;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *  @Groups({"show_Schedule", "show_consultation"})
      */
-    private $startHour;
+    private $start;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_Schedule", "show_consultation"})
      */
-    private $endHour;
+    private $end;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"show_Schedule","show_consultation"})
      */
     private $isAvailable;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $color;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule", "show_certificat"})
      */
     private $userDr;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_consultation","show_Schedule"})
      */
     private $userPatient;
 
@@ -77,6 +80,7 @@ class Schedule
 
     /**
      * @ORM\ManyToOne(targetEntity=Consultation::class, inversedBy="schedules")
+     * @Groups({"show_Schedule"})
      */
     private $consultation;
 
@@ -97,26 +101,26 @@ class Schedule
         return $this;
     }
 
-    public function getStartHour(): ?\DateTimeInterface
+    public function getStart(): ?\DateTimeInterface
     {
-        return $this->startHour;
+        return $this->start;
     }
 
-    public function setStartHour(?\DateTimeInterface $startHour): self
+    public function setStart(?\DateTimeInterface $start): self
     {
-        $this->startHour = $startHour;
+        $this->start = $start;
 
         return $this;
     }
 
-    public function getEndHour(): ?\DateTimeInterface
+    public function getEnd(): ?\DateTimeInterface
     {
-        return $this->endHour;
+        return $this->end;
     }
 
-    public function setEndHour(?\DateTimeInterface $endHour): self
+    public function setEnd(?\DateTimeInterface $end): self
     {
-        $this->endHour = $endHour;
+        $this->end= $end;
 
         return $this;
     }

@@ -17,35 +17,37 @@ class Symptom
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_consultation"})
+     * @Groups({"show_symptom", "show_consultation"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_symptom", "show_consultation"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_symptom", "show_consultation"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_consultation"})
+     * @Groups({"show_symptom"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_symptom"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_symptom"})
      */
     private $updatedAt;
 

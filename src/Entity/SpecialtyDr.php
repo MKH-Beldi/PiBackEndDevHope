@@ -15,29 +15,31 @@ class SpecialtyDr
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_user"})
+     * @Groups({"show_specialty", "show_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user"})
+     * @Groups({"show_specialty", "show_user" ,"show_profil"} )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_specialty", "show_user" ,"show_profil"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_specialty"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_specialty"})
      */
     private $updatedAt;
 

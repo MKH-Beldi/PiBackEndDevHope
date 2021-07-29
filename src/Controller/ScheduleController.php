@@ -27,7 +27,9 @@ class ScheduleController extends AbstractController
      */
     public function getAllAction(ScheduleRepository $scheduleRepository)
     {
-        return $this->restService->getAllAction($scheduleRepository);
+        $groups = ['groups' => 'show_Schedule'];
+
+        return $this->restService->getAllAction($scheduleRepository,$groups);
     }
 
     /**
@@ -36,7 +38,7 @@ class ScheduleController extends AbstractController
      */
     public function createAction(Request $request)
     {
-        return $this->restService->createWithRefsAction($request, "Schedule", [new Reference('User', 'userDr', false)]);
+        return $this->restService->createWithRefsAction($request, "Schedule", [new Reference('User', 'userDr', false), new Reference('User', 'userPatient', false)]);
     }
 
     /**
@@ -55,5 +57,17 @@ class ScheduleController extends AbstractController
     public function deleteAction($id, ScheduleRepository $scheduleRepository)
     {
         return $this->restService->deleteAction($id, $scheduleRepository);
+    }
+
+    /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="schedule_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(ScheduleRepository $scheduleRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_Schedule'];
+        return $this->restService->getBy($scheduleRepository, $criteria , $value, $groups);
     }
 }

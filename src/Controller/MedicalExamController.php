@@ -27,7 +27,8 @@ class MedicalExamController extends AbstractController
      */
     public function getAllAction(MedicalExamRepository $MedicalExamRepository)
     {
-        return $this->restService->getAllAction($MedicalExamRepository);
+        $groups = ['groups' => 'show_medicalExam'];
+        return $this->restService->getAllAction($MedicalExamRepository,$groups);
     }
 
     /**
@@ -55,6 +56,18 @@ class MedicalExamController extends AbstractController
     public function deleteAction($id, MedicalExamRepository $medicalExamRepository)
     {
         return $this->restService->deleteAction($id, $medicalExamRepository);
+    }
+
+    /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="medicalExam_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(MedicalExamRepository  $medicalExamRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_medicalExam'];
+        return $this->restService->getBy($medicalExamRepository, $criteria, $value, $groups);
     }
 
 }

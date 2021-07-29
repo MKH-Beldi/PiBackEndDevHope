@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/user")
+ * @Route("/api/login")
  */
 class UserController extends AbstractController
 {
@@ -58,4 +58,7 @@ class UserController extends AbstractController
     {
         return $this->restService->deleteAction($id, $userRepository);
     }
+
+
+
 }

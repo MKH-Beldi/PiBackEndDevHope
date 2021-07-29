@@ -26,7 +26,20 @@ class SymptomController extends AbstractController
      */
     public function getAllAction(SymptomRepository $symptomRepository)
     {
-        return $this->restService->getAllAction($symptomRepository);
+        $groups = ['groups' => 'show_symptom'];
+        return $this->restService->getAllAction($symptomRepository, $groups);
+    }
+
+    /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="symptom_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(SymptomRepository $symptomRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_symptom'];
+        return $this->restService->getBy($symptomRepository, $criteria , $value, $groups);
     }
 
     /**
@@ -56,5 +69,29 @@ class SymptomController extends AbstractController
     {
         return $this->restService->deleteAction($id, $symptomRepository);
     }
+
+    /**
+     * @Route("/getZone", name="symptom_getName", methods={"GET"})
+     * @return Response
+     */
+    public function getZoneAction(SymptomRepository $symptomRepository)
+    {
+         $groups = ['groups' => 'show_symptom'];
+
+        $list = $symptomRepository->findName();
+
+
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($list, 'json', $groups);
+
+        $response = new Response($data, Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'GET');
+
+        return $response;
+
+    }
+
 
 }

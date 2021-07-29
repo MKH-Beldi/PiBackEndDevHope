@@ -6,6 +6,7 @@ use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 /**
  * @ORM\Entity(repositoryClass=PublicationRepository::class)
  */
@@ -15,28 +16,28 @@ class Publication
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_publication"})
+     * @Groups({"show_publication" ,"show_comment"})
 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_publication", "show_comment" })
+     * @Groups({"show_publication", "show_comment"})
 
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"show_publication" , "show_comment"})
+     * @Groups({"show_publication" ,"show_comment"})
 
      */
     private $contente;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_publication" , "show_comment"})
+     * @Groups({"show_publication"})
 
      */
     private $file;

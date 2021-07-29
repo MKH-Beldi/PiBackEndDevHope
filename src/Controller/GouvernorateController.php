@@ -24,6 +24,6 @@ class GouvernorateController extends AbstractController
      */
     public function getAllAction(GouvernorateRepository $gouvernorateRepository)
     {
-        return $this->restService->getAllAction($gouvernorateRepository);
-    }
+        $groups = ['groups' => 'show_gouvernorate'];
+        return $this->restService->getAllAction($gouvernorateRepository, $groups);    }
 }

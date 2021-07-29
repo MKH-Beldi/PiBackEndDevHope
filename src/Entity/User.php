@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Repository\ProfilRepository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,19 +20,19 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_user", "show_consultation" , "show_profil" ,"show_publication"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil","show_Schedule","show_medicalExam", "show_consultation", "show_comment", "show_publication"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"show_user", "show_consultation" , "show_profil" ,"show_publication"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"show_user"})
+     * @Groups({"show_user", "show_consultation"})
      */
     private $roles = [];
 
@@ -48,19 +50,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" , "show_consultation" ,"show_profil" , "show_publication" ,"show_comment","show_Schedule"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user", "show_consultation" , "show_profil"  ,"show_publication" ,"show_comment"})
+     * @Groups({"show_user", "show_consultation" ,"show_profil" , "show_publication" ,"show_comment","show_Schedule"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     * @Groups({"show_user", "show_consultation"  ,"show_publication" , "show_comment"})
+     * @Groups({"show_user", "show_consultation"})
      */
     private $dateOfBirth;
 
@@ -78,49 +80,49 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $officeTel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $mobileTel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $imgProfil;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $zipCode;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $nationality;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $nameLab;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user"})
      */
     private $createdAt;
 
@@ -138,7 +140,7 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity=SpecialtyDr::class)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $specialtyDr;
 

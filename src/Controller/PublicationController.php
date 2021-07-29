@@ -13,6 +13,7 @@ use App\Entity\Reference;
 
 
 
+
 /**
  * @Route("/api/publication")
  */
@@ -31,8 +32,23 @@ class PublicationController extends AbstractController
     public function getAllAction(PublicationRepository  $publicationRepository)
     {
         $groups = ['groups' => 'show_publication'];
-        return $this->restService->getAllAction($publicationRepository, $groups);
+        return $this->restService->getAllAction($publicationRepository, $groups);;
     }
+
+    /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="publication_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(PublicationRepository $publicationRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_publication'];
+        return $this->restService->getBy($publicationRepository, $criteria , $value, $groups);
+    }
+
+
+
 
     /**
      * @Route("/create", name="publication_create", methods={"POST"})

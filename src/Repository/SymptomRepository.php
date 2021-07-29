@@ -47,4 +47,14 @@ class SymptomRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findName()
+    {
+        return $this->createQueryBuilder('s')
+            ->select('s.name')->distinct('s.name')
+            ->orderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

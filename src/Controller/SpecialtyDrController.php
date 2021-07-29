@@ -27,7 +27,20 @@ class SpecialtyDrController extends AbstractController
      */
     public function getAllAction(SpecialtyDrRepository $specialtyDrRepository)
     {
-        return $this->restService->getAllAction($specialtyDrRepository);
+        $groups = ['groups' => 'show_specialty'];
+        return $this->restService->getAllAction($specialtyDrRepository, $groups);
+    }
+
+    /**
+     * @param string $criteria
+     * @param mixed $value
+     * @Route("/get/{criteria}/{value}", name="specialtyDr_getBy", methods={"GET"})
+     * @return Response
+     */
+    public function getByAction(SpecialtyDrRepository $specialtyDrRepository, $criteria , $value)
+    {
+        $groups = ['groups' => 'show_specialty'];
+        return $this->restService->getBy($specialtyDrRepository, $criteria , $value, $groups);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\GouvernorateRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Repository\ProfilRepository;
 
 /**
  * @ORM\Entity(repositoryClass=GouvernorateRepository::class)
@@ -15,13 +16,13 @@ class Gouvernorate
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_user" , "show_profil"})
+     * @Groups({"show_user" ,"show_profil"})
      */
     private $name;
 

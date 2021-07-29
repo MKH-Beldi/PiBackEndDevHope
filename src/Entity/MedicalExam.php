@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MedicalExamRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MedicalExamRepository::class)
@@ -14,31 +15,37 @@ class MedicalExam
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_fileMedicalExam","show_medicalExam"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_medicalExam"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_medicalExam"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_medicalExam"})
      */
     private $observationLab;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"show_medicalExam"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"show_medicalExam"})
      */
     private $createdAt;
 
@@ -50,6 +57,7 @@ class MedicalExam
     /**
      * @ORM\ManyToOne(targetEntity=Consultation::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_medicalExam"})
      */
     private $consultation;
 

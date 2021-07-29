@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProfilRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
